@@ -1,0 +1,30 @@
+<%- include("sub/header.ejs") %>
+  <div class="container">
+    <img src="images/me.jpg" alt="" class="img">
+    <h1>My Blog</h1>
+    
+    <br>
+    <a id="newPostBtn" href="/new">New Post</a>
+    <ul id="postsList">
+       <% for (let i=0;i<posts.length;i++){%>
+        <li>
+          <h2>
+            <br>
+            <%=posts[i].title%>
+          </h2>
+          <small>
+            <%=posts[i].date %>
+          </small>
+          <p>
+            <%=posts[i].content%>
+          </p>
+          <br>
+          <small>By: <%=posts[i].author%> </small>
+          <a class="edit" href="/edit/<%= posts[i].id %>">Edit</a>
+          <a class="delete" href="/api/posts/delete/<%= posts[i].id %>">Delete</a>
+        </li>
+        <% }; %>
+    </ul>
+  </div>
+
+  <%- include("sub/footer.ejs") %>
